@@ -79,13 +79,23 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* Copyright Section with Hover Color Change */}
         <div className="pt-12 border-t border-coffee-900 flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-coffee-600 text-sm">
-           Copyrights © {new Date().getFullYear()} Bright Coffee House. Developed by Y-Global System Solution. All rights reserved.
+            Copyrights © {new Date().getFullYear()} Bright Coffee House. Developed by{' '}
+            <a
+              href="https://yared.infinityfreeapp.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-coffee-400 hover:text-coffee-100 font-medium underline underline-offset-4 transition-all duration-300 hover:scale-105 inline-block"
+            >
+              Y-Global System Solution
+            </a>
+            . All rights reserved.
           </p>
           <div className="flex gap-8 text-xs text-coffee-600 uppercase tracking-widest">
-            <a href="#" className="hover:text-coffee-400">Privacy Policy</a>
-            <a href="#" className="hover:text-coffee-400">Terms of Service</a>
+            <a href="#" className="hover:text-coffee-400 transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-coffee-400 transition-colors">Terms of Service</a>
           </div>
         </div>
       </div>
