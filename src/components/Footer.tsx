@@ -2,7 +2,7 @@ import { Coffee, Instagram, Facebook, Twitter, Mail, Phone, MapPin } from 'lucid
 
 export default function Footer() {
   return (
-    <footer id="contact" className="bg-coffee-950 text-coffee-50 pt-24 pb-12 px-6">
+    <footer className="bg-coffee-950 text-coffee-50 pt-24 pb-12 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
           {/* Brand Column */}
@@ -49,15 +49,15 @@ export default function Footer() {
             <ul className="flex flex-col gap-6">
               <li className="flex items-start gap-4">
                 <MapPin className="w-5 h-5 text-coffee-500 shrink-0" />
-                <span className="text-coffee-300">123 Artisan Way, Coffee District, NY 10001</span>
+                <span className="text-coffee-300">Addis Ababa, Edna Mall</span>
               </li>
               <li className="flex items-center gap-4">
                 <Phone className="w-5 h-5 text-coffee-500 shrink-0" />
-                <span className="text-coffee-300">+1 (555) 123-4567</span>
+                <span className="text-coffee-300">+251 900-000-000</span>
               </li>
               <li className="flex items-center gap-4">
                 <Mail className="w-5 h-5 text-coffee-500 shrink-0" />
-                <span className="text-coffee-300">hello@brightcoffee.com</span>
+                <span className="text-coffee-300">brightcoffee@gmail.com</span>
               </li>
             </ul>
           </div>

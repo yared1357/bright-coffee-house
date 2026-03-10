@@ -68,7 +68,7 @@ export default function App() {
         </section>
 
         {/* Contact & Map Section */}
-        <section className="py-24 px-6 bg-coffee-50/50">
+        <section id="contact" className="py-24 px-6 bg-coffee-50/50">
           <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Contact Form on the Left */}
             <div className="order-2 lg:order-1">
