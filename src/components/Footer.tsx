@@ -67,8 +67,8 @@ export default function Footer() {
             <h4 className="text-lg font-serif font-bold mb-8 text-white">Newsletter</h4>
             <p className="text-coffee-300 mb-6 text-sm">Subscribe to get special offers and coffee brewing tips.</p>
             <form className="flex flex-col gap-3">
-              <input 
-                type="email" 
+              <input
+                type="email"
                 placeholder="Your email address"
                 className="bg-coffee-900 border border-coffee-800 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-coffee-500 transition-colors"
               />
@@ -87,7 +87,7 @@ export default function Footer() {
               href="https://yared.infinityfreeapp.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-coffee-400 hover:text-coffee-100 font-medium underline underline-offset-4 transition-all duration-300 hover:scale-105 inline-block"
+              className="text-coffee-400 hover:text-coffee-100 font-medium transition-all duration-300 hover:scale-105 inline-block"
             >
               Y-Global System Solution
             </a>
