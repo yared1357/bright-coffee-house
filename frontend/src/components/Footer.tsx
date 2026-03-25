@@ -1,6 +1,30 @@
+import { useState } from 'react';
+import { api } from '../lib/api';
 import { Coffee, Instagram, Facebook, Twitter, Mail, Phone, MapPin } from 'lucide-react';
 
 export default function Footer() {
+  const [email, setEmail] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+    setLoading(true);
+    try {
+      const res = await api.post('/subscribe', { email });
+      if (res.message === 'Email already subscribed') {
+        alert('You are already subscribed!');
+      } else {
+        alert('Thank you for subscribing!');
+        setEmail('');
+      }
+    } catch (error) {
+      alert('Subscription failed. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <footer className="bg-coffee-950 text-coffee-50 pt-24 pb-12 px-6">
       <div className="max-w-7xl mx-auto">
@@ -66,14 +90,22 @@ export default function Footer() {
           <div>
             <h4 className="text-lg font-serif font-bold mb-8 text-white">Newsletter</h4>
             <p className="text-coffee-300 mb-6 text-sm">Subscribe to get special offers and coffee brewing tips.</p>
-            <form className="flex flex-col gap-3">
+            <form onSubmit={handleSubscribe} className="flex flex-col gap-3">
               <input
                 type="email"
                 placeholder="Your email address"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="bg-coffee-900 border border-coffee-800 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-coffee-500 transition-colors"
+                disabled={loading}
               />
-              <button className="bg-coffee-500 text-white py-3 rounded-lg font-bold uppercase tracking-widest text-xs hover:bg-coffee-600 transition-all">
-                Subscribe
+              <button
+                type="submit"
+                disabled={loading}
+                className={`bg-coffee-500 text-white py-3 rounded-lg font-bold uppercase tracking-widest text-xs hover:bg-coffee-600 transition-all ${loading ? 'opacity-70 cursor-not-allowed' : ''}`}
+              >
+                {loading ? 'Subscribing...' : 'Subscribe'}
               </button>
             </form>
           </div>

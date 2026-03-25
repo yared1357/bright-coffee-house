@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
+import { api } from '../lib/api';
 
 const ContactForm = () => {
     const [formData, setFormData] = useState({
@@ -8,13 +9,20 @@ const ContactForm = () => {
         email: '',
         message: ''
     });
+    const [loading, setLoading] = useState(false);
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        console.log('Form submitted:', formData);
-        // Add logic here to send the form data
-        alert('Thank you for your message! We will get back to you soon.');
-        setFormData({ name: '', phone: '', email: '', message: '' });
+        setLoading(true);
+        try {
+            await api.post('/contacts', formData);
+            alert('Thank you for your message! We will get back to you soon.');
+            setFormData({ name: '', phone: '', email: '', message: '' });
+        } catch (error) {
+            alert('Something went wrong. Please try again.');
+        } finally {
+            setLoading(false);
+        }
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -89,9 +97,10 @@ const ContactForm = () => {
 
                 <button
                     type="submit"
-                    className="w-full bg-coffee-800 text-white py-4 rounded-xl font-bold uppercase tracking-widest text-xs hover:bg-coffee-950 transition-all shadow-lg active:scale-[0.98]"
+                    disabled={loading}
+                    className={`w-full bg-coffee-800 text-white py-4 rounded-xl font-bold uppercase tracking-widest text-xs hover:bg-coffee-950 transition-all shadow-lg active:scale-[0.98] ${loading ? 'opacity-70 cursor-not-allowed' : ''}`}
                 >
-                    Send Message
+                    {loading ? 'Sending...' : 'Send Message'}
                 </button>
             </form>
         </motion.div>
