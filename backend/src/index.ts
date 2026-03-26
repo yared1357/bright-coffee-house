@@ -29,6 +29,11 @@ app.use(cors());
 app.use(express.json());
 app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
+// Root Route
+app.get('/', (req, res) => {
+    res.json({ message: 'Welcome to the Bright Coffee House API!' });
+});
+
 // --- Middleware ---
 const authenticateToken = (req: any, res: any, next: any) => {
     const authHeader = req.headers['authorization'];
